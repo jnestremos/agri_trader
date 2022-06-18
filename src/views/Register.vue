@@ -2,7 +2,7 @@
   <div class="register vw-100 vh-100" style="background-color:green; position:relative;">
   <div v-if="errors">
     <div v-for="(error, index) in errors" :key="index">
-      {{error}}
+      {{error[0]}}
     </div>    
   </div>
     <div class="container-fluid">
@@ -25,7 +25,7 @@
               <input type="text" name="firstName" class="form-control" v-model="user.firstName">
             </div>
             <div class="col-4">
-              <input type="text" name="lastName" id="" class="form-control" v-model="user.lastName">
+              <input type="text" name="lastName"  class="form-control" v-model="user.lastName">
             </div>            
           </div>  
           <div class="row mb-3">
@@ -49,10 +49,10 @@
               <input type="text" name="province" class="form-control" v-model="user.province">
             </div>
             <div class="col-4">
-              <input type="address" name="address" id="" class="form-control" v-model="user.address">
+              <input type="address" name="address"  class="form-control" v-model="user.address">
             </div>            
             <div class="col-4">
-              <input type="text" name="zipcode" id="" class="form-control" v-model="user.zipcode">
+              <input type="text" name="zipcode"  class="form-control" v-model="user.zipcode">
             </div>            
           </div>
           
@@ -81,13 +81,13 @@
               <input type="tel" name="contactNum3" id="contactNum3" class="form-control" v-model="user.contactNum3">
             </b-modal>         
             <div class="col-4">
-              <select name="gender" id="" class="form-select" v-model="user.gender">
+              <select name="gender"  class="form-select" v-model="user.gender">
                 <option value="M" selected>Male</option>
                 <option value="F">Female</option>
               </select>
             </div> 
             <div class="col-4">
-              <input type="date" name="birthDate" id="" class="form-control" v-model="user.birthDate">
+              <input type="date" name="birthDate"  class="form-control" v-model="user.birthDate">
             </div>            
           </div>
           
@@ -178,7 +178,12 @@ export default {
     registerAcc(){     
       this.register(this.user)
       .then(() => {
-        this.$router.push({name: 'Dashboard'})
+        if(this.$router.currentRoute.name == 'RegisterTrader'){ 
+          this.$router.push({name: 'Dashboard'})
+        } 
+        else{          
+          this.$router.push({name: 'ErrorPage'})
+        }                                                 
       })
       .catch((err) => {
         console.log(err)

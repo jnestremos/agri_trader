@@ -4,11 +4,12 @@ import router from './router'
 import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
+import { faPagelines } from '@fortawesome/free-brands-svg-icons'
 import { faCirclePlus, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.config.productionTip = false
-library.add(faCirclePlus, faUser, faArrowRightFromBracket)
+library.add(faCirclePlus, faUser, faArrowRightFromBracket, faPagelines)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({

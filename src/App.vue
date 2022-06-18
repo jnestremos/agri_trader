@@ -1,9 +1,18 @@
 <template>
   <div id="app"> 
+    <div style="position:absolute; background-color: red; z-index:999999999999999999" class="vw-100 vh-100" v-if="!loading">Loading</div>
     <router-view></router-view>
   </div>
 </template>
-
+<script>
+import { mapState } from 'vuex'
+export default {
+  name: "App", 
+  computed:{
+    ...mapState(['loading'])
+  },  
+}
+</script>
 <style>
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -25,4 +34,5 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>
