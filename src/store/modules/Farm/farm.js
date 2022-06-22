@@ -18,9 +18,24 @@ const state = {
     farm_produces: [],
     owners: [],       
     farm_details: {
-        farm: null,
-        owner: null,
-        produces: null
+        farm: {
+            farm_hectares: null,
+            farm_imageUrl: null,
+            farm_name: null,
+            farm_titleNum: null,
+        },        
+        owner: {
+            owner_firstName: null,
+            owner_lastName: null
+        },
+        produces: null,
+        address: {
+            farm_address: null,
+            farm_city: null,
+            farm_province: null,
+            farm_zipcode: null,
+        },
+        farm_partners: null
     }
 };
 
@@ -34,6 +49,9 @@ const getters = {
     },
     getFarmData(){
         return state.farm_data
+    },
+    getFarmDetails(){
+        return state.farm_details
     }
 };
 
@@ -103,7 +121,7 @@ const actions = {
             console.log(res.data)
             commit('setFarm', res.data)
         })
-    }
+    },    
 };
 
 
@@ -136,10 +154,24 @@ const mutations = {
         console.log(1)
     },
     setFarm: (state, data) => {
-        state.farm_details.farm = data.farm
-        state.farm_details.owner = data.owner
-        state.farm_details.produces = data.produces
-    }
+        state.farm_details.farm.farm_hectares = data.farm.farm_hectares
+        state.farm_details.farm.farm_imageUrl = data.farm.farm_imageUrl
+        state.farm_details.farm.farm_name = data.farm.farm_name
+        state.farm_details.farm.farm_titleNum = data.farm.farm_titleNum
+        state.farm_details.owner.owner_firstName = data.owner.owner_firstName
+        state.farm_details.owner.owner_lastName = data.owner.owner_lastName
+        if(data.produces.length > 0){
+            state.farm_details.produces = data.produces
+        }
+        state.farm_details.address.farm_address = data.farm_address.farm_address
+        state.farm_details.address.farm_zipcode = data.farm_address.farm_zipcode
+        state.farm_details.address.farm_city = data.farm_address.farm_city
+        state.farm_details.address.farm_province = data.farm_address.farm_province
+        if(data.farm_partners.length > 0){
+            state.farm_details.farm_partners = data.farm_partners
+        }
+        
+    },    
 };
 
 

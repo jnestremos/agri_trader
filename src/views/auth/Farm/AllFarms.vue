@@ -147,58 +147,7 @@ export default {
                 owners = owners[0].owner_firstName + ' ' + owners[0].owner_lastName               
             }
             return owners                        
-        },        
-        generatePagination(){
-            var pagination = document.getElementById('pagination')
-            var li = document.createElement('li')                    
-            var a = document.createElement('a')   
-            a.className = 'page-link'                 
-            if(this.getFarmData.current_page == 1){
-                li.className = 'page-item disabled'
-            }
-            else{
-                li.className = 'page-item'
-            }     
-
-            a.innerText = 'Previous'
-            li.appendChild(a)
-            pagination.appendChild(li)
-
-            for(var i = this.getFarmData.current_page; i <= this.getFarmData.last_page; i++){  
-                if(i+3 == i){
-                    break
-                }
-                else{
-                    li = document.createElement('li')                    
-                    a = document.createElement('a')
-                    a.className = 'page-link'
-                    if(i == this.getFarmData.current_page){
-                        li.className = 'page-item active'
-                    }
-                    else{
-                        li.className = 'page-item'
-                    }                    
-                    a.innerText = i
-                    li.appendChild(a)
-                    pagination.appendChild(li) 
-                }                                                                                      
-            }
-
-            li = document.createElement('li')                    
-            a = document.createElement('a')   
-            a.className = 'page-link'
-
-            if(this.getFarmData.current_page == this.getFarmData.last_page){
-                li.className = 'page-item disabled'
-            }
-            else{
-                li.className = 'page-item'
-            }
-
-            a.innerText = 'Next'
-            li.appendChild(a)
-            pagination.appendChild(li)
-        },
+        },                
         showPrevious(){
             var query = this.getFarmData.prev_page_url.split('?')[1]
             this.fetchAllFarms(query)

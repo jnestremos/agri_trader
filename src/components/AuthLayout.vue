@@ -50,7 +50,7 @@ export default {
       showModules(){     
         var modules = document.getElementById('modules')               
         var moduless = document.getElementById('moduless')  
-        moduless.style.zIndex = '9999'               
+        moduless.style.zIndex = '9999999999999'               
         modules.style.opacity = '1'  
         modules.style.display = 'block'      
         this.show = true               
@@ -71,7 +71,7 @@ export default {
         if(modules.style.opacity == '1'){
           modules.style.opacity = '1' 
           modules.style.display = 'block' 
-          moduless.style.zIndex = '9999'
+          moduless.style.zIndex = '999999999999'
         }                        
       },
       moduleLeave(){

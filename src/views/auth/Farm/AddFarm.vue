@@ -5,7 +5,7 @@
     </div>          
     <div class="container-fluid d-flex" style="height:90%; position:relative; z-index: 999;">
         <div style="width:55%; height:65%;" class="pb-5">
-            <form enctype="multipart/form-data" action="POST" class="d-flex flex-column justify-content-between" style="height:100%;" @submit.prevent='sendFarm($event)'>
+            <form enctype="multipart/form-data" action="POST" class="d-flex flex-column justify-content-between" style="height:100%;" @submit.prevent='sendFarm()'>
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <label for="farm_name" class="form-label me-4" style="width:15%;">Farm Name:</label>
                     <input type="text" name="farm_name" id="" class="form-control" v-model="farm.farm_name">
@@ -116,7 +116,7 @@ export default {
             const file = e.target.files[0]                                            
             var coverBg = document.getElementById('coverBg')
             if(file){                                      
-                formData.append('farm_imageUrl', file)                     
+                formData.append('farm_imageUrl', file, file.name)                     
                 coverBg.style.backgroundColor = ''
                 this.previewUrl = URL.createObjectURL(file)                      
             }

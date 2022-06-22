@@ -19,6 +19,7 @@ export default new Vuex.Store({
       setTimeout(() => {
         commit('appReady')
       }, 2000)
+      return Promise.resolve('success')
     }
   },
   mutations: {

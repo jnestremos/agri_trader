@@ -109,7 +109,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if(!store.state.loading){
+  if(!store.state.loading){    
     if(!to.meta.needsAuth){
       store.state.loading = true
     }
@@ -117,7 +117,7 @@ router.beforeEach((to, from, next) => {
       store.watch(
         (state) => state.loading,
         (ready) => {
-            if(ready){
+            if(ready){              
               proceed()
             }
         }
@@ -127,9 +127,9 @@ router.beforeEach((to, from, next) => {
   else if(!to.meta.needsAuth){
     store.state.loading = true
   } 
-  else{
+  else{    
     store.state.loading = false
-  }
+  }  
   proceed() 
   
   
